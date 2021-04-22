@@ -20,9 +20,4 @@ class PlayersController < ApplicationController
         end
     end
 
-    def filter
-        filter = Player.where(plays_for_team: params[:filter])
-        render json: filter
-    end
-
 end

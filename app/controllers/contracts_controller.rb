@@ -6,7 +6,13 @@ class ContractsController < ApplicationController
     end
 
     def create
-        if Team.find(params[:team_id]).contracts.length < 5
+        team = Team.find(params[:team_id]).contracts
+        if team.length < 5
+            team.each do |player| 
+                if player.player_id == params[:player_id]
+                   return render json: { errors: ['Can\'t add the same player more than once'] }, status: :unprocessable_entity
+                end
+            end
             contract = Contract.create(team_id: params[:team_id], player_id: params[:player_id])
             render json: contract 
         else
