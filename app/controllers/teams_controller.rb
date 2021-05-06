@@ -31,5 +31,18 @@ class TeamsController < ApplicationController
         render json: player
     end
 
+    def point_total
+        total = 0
+
+        team = Team.find(params[:team_id])
+        team.contracts.each do |player|
+            total += player.points
+        end
+
+
+
+        team.update(points: total)
+        render json: team
+    end
 
 end

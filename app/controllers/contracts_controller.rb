@@ -13,8 +13,9 @@ class ContractsController < ApplicationController
                    return render json: { errors: ['Can\'t add the same player more than once'] }, status: :unprocessable_entity
                 end
             end
-            contract = Contract.create(team_id: params[:team_id], player_id: params[:player_id])
-            render json: contract 
+            signed = Contract.create(team_id: params[:team_id], player_id: params[:player_id])
+            contract = Contract.find(signed.id)
+            render json: contract
         else
             render json: { errors: ['Max player limit reached'] }, status: :unprocessable_entity
         end
@@ -24,6 +25,12 @@ class ContractsController < ApplicationController
         removed_contract = Contract.find_by(player_id: params[:player_id])
         removed_contract.destroy
         render json: removed_contract
+    end
+
+    def get_points
+        update_contract = Contract.find_by(player_id: params[:player_id])
+        update_contract.update(points: params[:points])
+        render json: update_contract
     end
 
 end

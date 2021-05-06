@@ -21,12 +21,15 @@ Rails.application.routes.draw do
   get '/team/:user_id/', to: 'teams#show'
   get '/team/:team_id/roster', to: 'teams#roster'
   post '/team/:user_id/new', to: 'teams#create'
+  patch '/team/:team_id/', to: 'teams#point_total'
   delete '/team/:team_id', to: 'teams#delete'
   delete '/team/:team_id/:player_id', to: 'teams#remove_from_team'
 
   ######## CONTRACT ROUTES ########
   get '/contract/:player_id', to: 'contracts#find'
   post '/contract', to: 'contracts#create'
+  patch '/contract/:player_id', to: 'contracts#get_points'
   delete '/contract/:player_id', to: 'contracts#delete'
+
 
 end

@@ -1,8 +1,4 @@
 class Ball
-    
-    # URL TO SEARCH FOR PLAYERS
-    # https://www.balldontlie.io/api/v1/players
-
     # LOOP FOR API CALL TO RECEIVE ALL PLAYER DATA FOR RAILS DB
     def self.all
         players = []

@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_161027) do
   create_table "contracts", force: :cascade do |t|
     t.bigint "team_id"
     t.bigint "player_id"
+    t.integer "points", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["player_id"], name: "index_contracts_on_player_id"
@@ -69,7 +70,8 @@ ActiveRecord::Schema.define(version: 2021_04_10_161027) do
 
   create_table "teams", force: :cascade do |t|
     t.string "team_name"
-    t.integer "salary"
+    t.integer "salary", default: 100000
+    t.integer "points", default: 0
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

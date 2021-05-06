@@ -25,9 +25,8 @@ joe = User.create(name: "Joe", password: "12345", email: "thisisjoe45@gmail.com"
 ken = User.create(name: "Kenny", password: "12345", email: "kennyomega@gmail.com")
 
 # Default user team
-tigers = Team.create(team_name: "Tigers", salary: 100000, user_id: joe.id)
-bros = Team.create(team_name: "Bros", salary: 100000, user_id: joe.id)
-falcons = Team.create(team_name: "Falcons", salary: 100000, user_id: ken.id)
+tigers = Team.create(team_name: "Tigers", user_id: joe.id)
+bros = Team.create(team_name: "Bros", user_id: joe.id)
 
 # Destroy duplicates and non-active players
 playerIDs = [
